@@ -1,0 +1,30 @@
+{
+  "name": "my-movies-bff",
+  "version": "1.0.0",
+  "description": "This is a example about how create a Backend For Frontend (BFF) with GraphQL and Apollo Server.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taisreis67/my-movies-bff.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taisreis67/my-movies-bff/issues"
+  },
+  "homepage": "https://github.com/taisreis67/my-movies-bff#readme",
+  "dependencies": {
+    "@apollo/server": "^4.7.0",
+    "graphql": "^16.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.1",
+    "typescript": "^5.0.4"
+  }
+}
