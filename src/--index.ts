@@ -1,7 +1,5 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { buildSubgraphSchema } from '@apollo/federation';
-import { gql } from 'apollo-server-express';
 import axios from 'axios';
 import humps from 'humps';
 
