@@ -1,14 +1,19 @@
 {
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
   "compilerOptions": {
-    "rootDir": "src",
+    "rootDirs": ["src"],
     "outDir": "dist",
     "lib": ["es2020"],
     "target": "es2020",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "types": ["node", "jest"],
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
-  }
+    "sourceMap": true
+  },
+  "include": ["/**/*.ts"],
+  "exclude": ["node_modules"],
 }
