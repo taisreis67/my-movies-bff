@@ -1,20 +1,23 @@
-import { Movies as MovieDataSource, ProductionCompany as ProductionCompanyDataSource } from '../../datasources'
+import humps from 'humps';
+import { Movies as MoviesDataSource } from '../../dataSources';
 
 export const resolvers = {
   Query: {
-    movies: () => { 
-      const movieDataSource = new MovieDataSource();
-      return movieDataSource.getMoviesList({ page: 1 });
+    movies: async () => { 
+      const moviesDataSource = new MoviesDataSource();
+      const movies = await moviesDataSource.getMoviesList({ page: 1 });
+
+      for (const movie of movies) {
+        const movieDetail = await moviesDataSource.getMovie({ id: movie.id });
+        movie.production_companies = movieDetail.production_companies;
+      }
+
+      return humps.camelizeKeys(movies);
     },
-    movie: (_: any, { id }: { id: number }) => { 
-      const movieDataSource = new MovieDataSource();
-      return movieDataSource.getMovie({ id });
+    movie: async (_: any, { id }: { id: number }) => { 
+      const moviesDataSource = new MoviesDataSource();
+      const movie = await moviesDataSource.getMovie({ id });
+      return humps.camelizeKeys(movie);
     },
   },
-  Movie: {
-    productCompany: (_: any, { id }: { id: number }) => {
-      const productionCompanyDataSource = new ProductionCompanyDataSource();
-      return productionCompanyDataSource.getProductionCompany({ id });
-    },
-  }
 };

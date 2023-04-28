@@ -4,17 +4,17 @@ export const typeDefs = gql`
   type Movie {
     id: Int
     title: String
+    productionCompanies: [ProductionCompany]
   }
 
-  type Movies {
-    movies: [Movie]
+  type ProductionCompany {
+    id: Int
+    name: String
+    originCountry: String
   }
 
   extend type Query {
-    movies(): [Movie] 
-  }
-
-  extend type Query {
-    productCompany(id: Int!): ProductCompany 
+    movie(id: Int!): Movie
+    movies: [Movie] 
   }
 `;
