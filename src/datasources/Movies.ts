@@ -6,12 +6,12 @@ export class Movies {
 
   constructor() {}
 
-  async getMoviesList({ page }) {
+  async getMoviesList({ page }: { page: number}) {
     const response = await axios.get(`${this.URL}/movie/popular?page=${page}&api_key=${this.TOKEN}`);
     return response.data.results;
   }
 
-  async getMovie({ id }) {
+  async getMovie({ id }: { id: number }) {
     const response = await axios.get(`${this.URL}/movie/${id}?api_key=${this.TOKEN}`);
     return response.data;
   }

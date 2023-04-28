@@ -2,7 +2,7 @@ import { ProductionCompany as ProductionCompanyDataSource } from '../../datasour
 
 export const resolvers = {
   Query: {
-    productCompany: (_, { id }) => {
+    productCompany: (_: any, { id }: { id: number }) => {
       const productionCompanyDataSource = new ProductionCompanyDataSource();
       return productionCompanyDataSource.getProductionCompany({ id });
     },

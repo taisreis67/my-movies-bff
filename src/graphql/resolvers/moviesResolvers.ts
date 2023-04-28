@@ -6,13 +6,13 @@ export const resolvers = {
       const movieDataSource = new MovieDataSource();
       return movieDataSource.getMoviesList({ page: 1 });
     },
-    movie: (_, { id }) => { 
+    movie: (_: any, { id }: { id: number }) => { 
       const movieDataSource = new MovieDataSource();
       return movieDataSource.getMovie({ id });
     },
   },
   Movie: {
-    productCompany: (_, { id }) => {
+    productCompany: (_: any, { id }: { id: number }) => {
       const productionCompanyDataSource = new ProductionCompanyDataSource();
       return productionCompanyDataSource.getProductionCompany({ id });
     },

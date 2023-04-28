@@ -6,7 +6,7 @@ export class ProductionCompany {
 
   constructor() {}
 
-  async getProductionCompany({ id }) {
+  async getProductionCompany({ id }: { id: number }) {
     const response = await axios.get(`${this.URL}/company/${id}?api_key=${this.TOKEN}`);
     return response.data;
   }
