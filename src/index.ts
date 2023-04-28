@@ -3,18 +3,19 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 import { buildSubgraphSchema } from '@apollo/federation';
 import { gql } from 'apollo-server-express';
 import axios from 'axios';
+import humps from 'humps';
 
 const typeDefs = `#graphql
   type Movie {
     id: Int
     title: String
-    productionCompany: [ProductionCompany]
+    productionCompanies: [ProductionCompany]
   }
 
   type ProductionCompany {
     id: Int
     name: String
-    homepage: String
+    originCountry: String
   }
 
   type Query {
@@ -34,28 +35,14 @@ const resolvers = {
 
       for (const movie of movies) {
         const movieResponse = await axios.get(`${URL}/movie/${movie.id}?api_key=${TOKEN}`);
-        const productsCompanies = movieResponse.data.production_companies;
-
-        for (const productsCompany of productsCompanies) {
-          const productCompanyResponse = await axios.get(`${URL}/company/${productsCompany.id}?api_key=${TOKEN}`);
-          movie.productionCompany.push(productCompanyResponse.data);
-        }
+        movie.production_companies = movieResponse.data.production_companies;
       }
 
-      return movies;
+      return humps.camelizeKeys(movies);
     },
     movie: async (_: any, { id }: { id: number }) => { 
       const movieResponse = await axios.get(`${URL}/movie/${id}?api_key=${TOKEN}`);
-      const movie = movieResponse.data;
-      const productsCompanies = movie.production_companies;
-      console.log(movie);
-
-      for (const productsCompany of productsCompanies) {
-        const productCompanyResponse = await axios.get(`${URL}/company/${productsCompany.id}?api_key=${TOKEN}`);
-        movie.productionCompany.push(productCompanyResponse.data);
-      }
-
-      return movie;
+      return humps.camelizeKeys(movieResponse.data);
     },
   },
 };
