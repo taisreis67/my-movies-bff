@@ -4,15 +4,15 @@
     "experimentalSpecifierResolution": "node"
   },
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ES2022",
     "lib": ["esnext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "noEmit": true,
     "noImplicitReturns": true,
     "sourceMap": true,
@@ -21,11 +21,9 @@
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "types": ["node", "jest"],
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["./src/*"]
-    },
+    "rootDirs": ["src"],
+    "outDir": "dist"
   },
   "include": ["/**/*.ts"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "src/**/*.test.ts"],
 }

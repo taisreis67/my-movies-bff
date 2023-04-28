@@ -1,5 +1,5 @@
 import humps from 'humps';
-import { Movies as MoviesDataSource } from '../../dataSources';
+import { Movies as MoviesDataSource } from '../../dataSources/index.js';
 
 export const resolvers = {
   Query: {

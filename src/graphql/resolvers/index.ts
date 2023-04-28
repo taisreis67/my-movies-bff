@@ -1,1 +1,1 @@
-export { resolvers as MoviesResolvers } from './moviesResolvers';
+export { resolvers as MoviesResolvers } from './moviesResolvers.js';

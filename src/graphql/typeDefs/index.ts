@@ -1,1 +1,1 @@
-export { typeDefs as MoviesTypeDefs } from './moviesTypes';
+export { typeDefs as MoviesTypeDefs } from './moviesTypes.js';
